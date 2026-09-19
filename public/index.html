@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#111827" />
+  <title>Kasir HP</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section id="kasirPage" class="page active">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">APLIKASI KASIR</p>
+          <h1>Kasir</h1>
+        </div>
+        <div class="date" id="today"></div>
+      </header>
+
+      <div class="categories" id="categories">
+        <button class="category active" data-category="ALL">ALL</button>
+        <button class="category" data-category="TEA">TEA</button>
+        <button class="category" data-category="MILKTEA">MILKTEA</button>
+        <button class="category" data-category="MILKY">MILKY</button>
+        <button class="category" data-category="KOPI">KOPI</button>
+        <button class="category" data-category="POPICE">POPICE</button>
+      </div>
+
+      <div id="products" class="products"></div>
+
+      <div class="checkout-panel">
+        <div class="summary-row">
+          <span>Total</span>
+          <strong id="total">Rp0</strong>
+        </div>
+
+        <label class="money-label">
+          Uang pelanggan
+          <input id="paid" type="number" inputmode="numeric" placeholder="Masukkan uang" />
+        </label>
+
+        <div class="change-box">
+          <span id="changeLabel">Kembalian</span>
+          <strong id="change">Rp0</strong>
+        </div>
+
+        <button id="checkoutBtn" class="checkout-btn">CHECKOUT</button>
+      </div>
+    </section>
+
+    <section id="dataPage" class="page">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">RIWAYAT</p>
+          <h1>Data</h1>
+        </div>
+        <button class="refresh-btn" id="refreshData">↻</button>
+      </header>
+
+      <div class="data-tabs">
+        <button class="data-tab active" data-tab="daily">Harian</button>
+        <button class="data-tab" data-tab="monthly">Bulanan</button>
+      </div>
+
+      <div id="dailyPanel" class="data-panel">
+        <div class="stat-card">
+          <span>Pemasukan hari ini</span>
+          <strong id="dailyTotal">Rp0</strong>
+          <small id="dailyCount">0 transaksi</small>
+        </div>
+        <div id="dailyHistory" class="history-list"></div>
+      </div>
+
+      <div id="monthlyPanel" class="data-panel hidden">
+        <div id="monthlyCards"></div>
+
+        <button id="expenseBtn" class="expense-main-btn">＋ Tambah Pengeluaran</button>
+
+        <div class="section-title">Pengeluaran terbaru</div>
+        <div id="expenseList" class="history-list"></div>
+      </div>
+    </section>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-page="kasirPage">
+        <span>🛒</span>
+        <b>Kasir</b>
+      </button>
+      <button class="nav-item" data-page="dataPage">
+        <span>📊</span>
+        <b>Data</b>
+      </button>
+    </nav>
+  </main>
+
+  <div id="expenseModal" class="modal hidden">
+    <div class="modal-card">
+      <button class="modal-close" id="closeExpense">×</button>
+      <h2>Tambah Pengeluaran</h2>
+
+      <label>
+        Nama pengeluaran
+        <input id="expenseName" type="text" placeholder="Contoh: Beli bahan" />
+      </label>
+
+      <label>
+        Nominal
+        <input id="expenseAmount" type="number" inputmode="numeric" placeholder="Rp" />
+      </label>
+
+      <label>
+        Keterangan
+        <textarea id="expenseNote" placeholder="Opsional"></textarea>
+      </label>
+
+      <button id="saveExpense" class="checkout-btn">SIMPAN</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
